@@ -1,32 +1,41 @@
 <template>
     <div>
         
-      <HomeHeader/>
+    <HomeHeader/>
 
-      <HomeContent/>
+    <HomeContent/>
 
-      <HomeFooter/>
+    <HomeFooter/>
 
     </div>
-  </template>
+</template>
   
-  <script>
-  import HomeHeader from './pages/HomeHeader.vue';
-  import HomeContent from './pages/HomeContent.vue';
-  import HomeFooter from './pages/HomeFooter.vue';
+<script>
+import HomeHeader from './pages/HomeHeader.vue';
+import HomeContent from './pages/HomeContent.vue';
+import HomeFooter from './pages/HomeFooter.vue';
   
-  export default {
-    name: 'ComponentsLayout',
+export default {
+  name: 'ComponentsLayout',
     
-    components: {
-        HomeHeader,
-        HomeContent,
-        HomeFooter
-  }
-  }
-  </script>
+  components: {
+    HomeHeader,
+    HomeContent,
+    HomeFooter
+  },
+
+  data () {
+    return {
+      userName: null
+      }
+    },
+
+
+}
+</script>
   
-  <style>
+
+<style>
  
-  </style>
+</style>
   
