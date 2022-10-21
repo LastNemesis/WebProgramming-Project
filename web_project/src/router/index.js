@@ -29,9 +29,9 @@ function guardMyroute(to, from, next)
 
 // Defining some routes
 const routes = [
-    { path: '/Home', component: HomeContent},
+    { path: '/', component: HomeContent},
     { 
-        path: '/Conversations/:id', 
+        path: '/Emails/:id', 
         component: ConversationPage, 
         
         beforeEnter : guardMyroute,

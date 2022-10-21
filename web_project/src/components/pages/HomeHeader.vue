@@ -13,13 +13,13 @@
       <div class="Navigation"> 
         Navigation :&emsp;
         
-        <router-link to="/Home" class="navText"> 
+        <router-link to="/" class="navText"> 
           Home 
         </router-link>
 
         <div v-if="this.$store.state.userName!='Nobody is logged at the moment'">&emsp;-&emsp;</div>
 
-        <router-link to="/Conversations/:1" class="navText" v-if="this.$store.state.userName!='Nobody is logged at the moment'"> 
+        <router-link to="/Emails/:1" class="navText" v-if="this.$store.state.userName!='Nobody is logged at the moment'"> 
           Emails 
         </router-link>
 

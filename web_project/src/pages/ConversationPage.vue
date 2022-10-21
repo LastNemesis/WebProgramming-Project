@@ -2,7 +2,10 @@
 <template>
     <div class="Body">
 
-        <ReadEmail></ReadEmail>
+      <ReadEmail></ReadEmail>
+
+      <router-view></router-view>
+
         
     </div>
   </template>
