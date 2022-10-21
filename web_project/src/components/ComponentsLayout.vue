@@ -3,7 +3,7 @@
         
     <HomeHeader/>
 
-    <HomeContent/>
+    <router-view></router-view>
 
     <HomeFooter/>
 
@@ -12,7 +12,7 @@
   
 <script>
 import HomeHeader from './pages/HomeHeader.vue';
-import HomeContent from './pages/HomeContent.vue';
+//import HomeContent from './pages/HomeContent.vue';
 import HomeFooter from './pages/HomeFooter.vue';
   
 export default {
@@ -20,7 +20,6 @@ export default {
     
   components: {
     HomeHeader,
-    HomeContent,
     HomeFooter
   },
 

@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import store from './store'
 import App from './App.vue'
+import router from './router'
 
 // Mounting our app
 const app = createApp(App) //.mount('#app')
@@ -9,6 +10,6 @@ const app = createApp(App) //.mount('#app')
 app.use(store)
 
 // Using the routers
-//app.use(router)
+app.use(router)
 
 app.mount('#app')

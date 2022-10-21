@@ -11,7 +11,18 @@
       </div>
       
       <div class="Navigation"> 
+        Navigation :&emsp;
         
+        <router-link to="/Home" class="navText"> 
+          Home 
+        </router-link>
+
+        <div v-if="this.$store.state.userName!='Nobody is logged at the moment'">&emsp;-&emsp;</div>
+
+        <router-link to="/Conversations/:1" class="navText" v-if="this.$store.state.userName!='Nobody is logged at the moment'"> 
+          Emails 
+        </router-link>
+
       </div>
 
     </div>
@@ -46,8 +57,22 @@ export default {
 
 .Navigation
 {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 5px;
+  margin-top: 15px;
+  color: white;
+  background-color: #75d1af;
+  font: bold 25px/1 sans-serif;
+  text-decoration: none;
+  min-width: 50%;
+}
+
+.navText{
   color: white;
   font: bold 20px/1 sans-serif;
+  text-decoration: none;
 }
 
 

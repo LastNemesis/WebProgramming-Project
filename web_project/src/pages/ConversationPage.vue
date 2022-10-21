@@ -1,18 +1,21 @@
 <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = Template -->
 <template>
     <div class="Body">
-        This is the Home Page ! 
-        Please log in for more content !
+
+        <ReadEmail></ReadEmail>
+        
     </div>
   </template>
 
 <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = Script -->
 <script>
+import ReadEmail from '../components/mail/ReadEmail.vue'
 
 export default {
-    name: 'HomeContent',
+    name: 'ConversationPage',
     
     components:{
+        ReadEmail
     }
 }
 </script>
@@ -23,7 +26,7 @@ export default {
   background-color: #8cd2b8;
   height: auto;
   color: white;
-  font:  20px/1 sans-serif;
+  font: bold 40px/1 sans-serif;
   padding: 8px;
   text-align: left;
   margin-bottom: 5px;
