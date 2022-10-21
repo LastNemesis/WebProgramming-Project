@@ -3,7 +3,7 @@
   <div class="contentMail" v-if="this.$store.state.userName !='Nobody is logged at the moment'">
   
     <!-- DISPLAYS BUTTON THAT ALLOW THE USER TO LOAD THEIR MAIL-->
-    <div v-if="this.mail!=null">
+    <div v-if="this.mail==null">
       <BaseButton class="load" @click="getMail">
         Load your mails
       </BaseButton>
@@ -12,17 +12,28 @@
     <!-- DISPLAYS THEIR MAIL-->
     <div v-else>
       
-      <table id="secondTable">
+      <table id="Table">
+
         <thead>
           <tr>
             <th v-for="col in columns" :key="col">{{col}}</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr v-for="row in rows" :key="row">
-            <td v-for="col in columns" :key="col">{{row[col]}}</td>
+
+          <tr v-for="row in mailLenght" :key="row">
+
+            <td v-for="col in columns" :key="col">
+              
+              {{ displayer(row, col) }}
+
+            </td>
+
           </tr>
+
         </tbody>
+
       </table>
 
     </div>
@@ -45,9 +56,18 @@ export default {
 
     data () {
       return {
+
         mail: null,
-        columns: ['Object', 'Date', 'Sender/From', 'Bodypreview'],
-        rows: {'Object':'1', 'Date':'1', 'Sender/From':'1', 'Bodypreview':'1'},
+
+        mailLenght: 0,
+
+        count: 0,
+
+        columns: ['Object', 'Sender/From', 'Bodypreview', 'Date'],
+
+        titleMail : {'Object':'subject', 'Sender/From':'sender', 'Bodypreview':'bodyPreview', 'Date':'receivedDateTime'},
+
+        rows: {'Object':'Object', 'Sender/From':'sender', 'Bodypreview':'bodyPreview', 'Date':'receivedDateTime'}
       }
     },
 
@@ -77,7 +97,35 @@ export default {
       },
 
       updateUI(response){
+        //console.log(response)
         this.mail = response
+        this.mailLenght = Object.keys(response).length
+        //console.log(this.mailLenght)
+      },
+
+      displayer(row, col){
+
+        // Verifying for the sender
+        if(col == 'Sender/From') {
+          console.log("test")
+          console.log(this.mail?.value[row]?.from)
+          
+          // if FROM is undefined
+          if (this.mail?.value[row]?.from){
+            return this.mail.value[row][ 'from' ][ 'emailAddress' ][ 'address' ]
+          }
+
+          // if SENDER is undefined
+          if (this?.mail?.value[row]?.sender){
+            return this.mail.value[row][ 'sender' ][ 'emailAddress' ][ 'address' ]
+          }
+
+          // if BOTH are undefined
+          return 'Undefined sender'
+        }
+
+        // Giving the value from the JSON mail in other cases
+        return this.mail.value[row][ this.titleMail[col] ]
       }
     }
 }

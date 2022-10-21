@@ -1,10 +1,10 @@
 // Importing our components
 import HomeContent from '../components/pages/HomeContent.vue'
 import ConversationPage from '../pages/ConversationPage.vue'
-import Home from '../pages/HomePage.vue'
+import ConversationContent from '../pages/ConversationContent.vue'
 
 // Importing the methods from the VueRouter package
-import {createRouter, createWebHashHistory} from 'vue-router';
+import {createRouter, createWebHistory} from 'vue-router';
 
 // Import the store value
 import store from '../store.js'
@@ -13,6 +13,7 @@ import store from '../store.js'
 function guardMyroute(to, from, next)
 {
     var isAuthenticated= false;
+
     if(store.state.userName!='Nobody is logged at the moment') 
         isAuthenticated = true;
     else
@@ -23,33 +24,40 @@ function guardMyroute(to, from, next)
         next(); 
     } else{
         // Not allowed
-        next('/Home');
+        next('/');
     }
 }
 
 // Defining some routes
-const routes = [
-    { path: '/', component: HomeContent},
-    { 
-        path: '/Emails/:id', 
-        component: ConversationPage, 
-        
-        beforeEnter : guardMyroute,
-        children: [
-            {
-              path: '',
-              component: Home,
-            }
-          ]
-    }
-  ]
+const routes = 
+[
+  { 
+    path: '/', 
+    component: HomeContent, 
+    alias: '/Home'
+  },
+
+  { 
+    path: '/Emails/:id', 
+    component: ConversationPage,  
+    beforeEnter : guardMyroute,
+    children: [
+      {
+        path: '',
+        component: ConversationContent,
+      }
+    ]
+  }
+]
 
 // Creating the router instance
 const router = createRouter({
     // Providing history
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes, 
   })
+
+
 
 // Exporting the router
 export default router;

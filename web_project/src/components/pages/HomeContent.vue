@@ -27,6 +27,7 @@ export default {
   padding: 8px;
   text-align: left;
   margin-bottom: 5px;
+  min-height: 100px;
 }
 .text{
   color: white;

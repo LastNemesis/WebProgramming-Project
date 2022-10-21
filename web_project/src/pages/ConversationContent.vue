@@ -2,7 +2,7 @@
 <template>
     <div class="text">
 
-        This is a sub content
+        Temporary text
         
     </div>
   </template>
@@ -11,7 +11,7 @@
 <script>
 
 export default {
-    name: 'ConversationPage',
+    name: 'ConversationContent',
     
     components:{
     }
