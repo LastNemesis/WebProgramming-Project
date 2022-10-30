@@ -2,7 +2,7 @@
 <template>
     <div class="text">
 
-        Temporary text
+      
         
     </div>
   </template>

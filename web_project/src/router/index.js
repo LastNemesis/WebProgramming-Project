@@ -34,7 +34,8 @@ const routes =
   { 
     path: '/', 
     component: HomeContent, 
-    alias: '/Home'
+    alias: '/Home',
+    name: 'Home'
   },
 
   { 
@@ -56,7 +57,6 @@ const router = createRouter({
     history: createWebHistory(),
     routes, 
   })
-
 
 
 // Exporting the router
