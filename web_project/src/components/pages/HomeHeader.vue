@@ -2,6 +2,10 @@
 <template>
     <div class="Header">
 
+      <router-link to="/" class="navText"> 
+        <img v-bind:src="require('../../assets/Logo.png')" class ="img"/> 
+      </router-link>
+      
       Mail Reader - Microsoft Authentification Project
 
       <SignIn class="right"></SignIn>
@@ -84,6 +88,12 @@ export default {
 
 .right{
   float: right;
+}
+
+.img{
+  height: 40px;
+  width: auto;
+  margin-top: 10px;
 }
 </style>
 <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = End -->
