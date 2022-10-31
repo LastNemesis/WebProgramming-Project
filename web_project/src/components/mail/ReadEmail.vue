@@ -3,7 +3,7 @@
   <div class="contentMail" v-if="this.$store.state.userName !='Nobody is logged at the moment'">
   
     <!-- DISPLAYS BUTTON THAT ALLOW THE USER TO LOAD THEIR MAIL-->
-    <div v-if="this.mail==null">
+    <div v-if="this.mail==null" class = "Centered">
       <BaseButton class="load" @click="getMail">
         Load your mails
       </BaseButton>
@@ -86,7 +86,7 @@
 
           <tbody>
 
-            <tr v-for="row in selected" :key="row">
+            <tr v-for="row in selectedF" :key="row">
 
               <td v-for="col in columns" :key="col">
                 
@@ -138,6 +138,8 @@ export default {
 
         selected: 10,
 
+        selectedF: 0,
+
         Key: null,
 
         searchK: "",
@@ -159,6 +161,7 @@ export default {
     methods:{
       // =============================================================================================== Get mail
       getMail(){
+        this.Key = null;
         const Msal = this.$store.state.MySALObj;
         this.callMsGraph(graphConfig.graphMailEndpoint, Msal.accessToken);
       },
@@ -288,17 +291,21 @@ export default {
       researchMail(){
         if(this.searchK != "" && this.searchDT != ""){
           this.filteredmail = this.filteredKeyAndDate();
+          this.Key = 1;
         }
         if(this.searchK != ""){
           this.filteredmail = this.filteredKeyword();
+          this.Key = 1;
         }
         if(this.searchS != ""){
           this.filteredmail = this.filteredSender();
+          this.Key = 1;
         }
         if(this.searchDT != ""){
           this.filteredmail = this.filteredDate();
+          this.Key = 1;
         }
-        this.Key = 1;
+        this.selectedF = Object.keys(this.filteredmail).length
       },
 
       // =============================================================================================== Keyword
@@ -364,18 +371,16 @@ export default {
       // =============================================================================================== display the mail value inside the table
       displayerF(row, col){
 
-        console.log(this.filteredmail)
-
         // Verifying for the sender
         if(col == 'Sender/From') {
         
         // if FROM is undefined
-        if (this.filteredmail?.value[row]?.from){
-          return this.filteredmail.value[row-1][ 'from' ][ 'emailAddress' ][ 'address' ]
+        if (this.filteredmail[row]?.from){
+          return this.filteredmail[row-1][ 'from' ][ 'emailAddress' ][ 'address' ]
         }
 
         // if SENDER is undefined
-        if (this?.filteredmail?.value[row]?.sender){
+        if (this?.filteredmail[row]?.sender){
           return this.filteredmail.value[row-1][ 'sender' ][ 'emailAddress' ][ 'address' ]
         }
 
@@ -383,16 +388,16 @@ export default {
         return 'Undefined sender'
       }
 
-      if(!this?.filteredmail?.value[row-1]){
+      if(!this?.filteredmail[row-1]){
         return "Empty"
       }
 
-      if(!this?.filteredmail.value[row-1]?.[ this.titleMail[col] ]){
+      if(!this?.filteredmail[row-1]?.[ this.titleMail[col] ]){
         return "Empty value"
       }
 
       // Giving the value from the JSON mail in other cases
-      return this.filteredmail.value[row-1][ this.titleMail[col] ]
+      return this.filteredmail[row-1][ this.titleMail[col] ]
     },
 
   },
@@ -406,6 +411,10 @@ export default {
 .load{
     min-width: 150px;
     min-height: 40px;
+}
+
+.Centered{
+  text-align: center;
 }
 
 table {

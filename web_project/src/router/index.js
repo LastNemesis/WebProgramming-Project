@@ -2,6 +2,8 @@
 import HomeContent from '../components/pages/HomeContent.vue'
 import ConversationPage from '../pages/ConversationPage.vue'
 import ConversationContent from '../pages/ConversationContent.vue'
+import InformationEmails from '../components/mail/InfoEmails'
+import HomeCredits from '../components/pages/HomeCredits.vue'
 
 // Importing the methods from the VueRouter package
 import {createRouter, createWebHistory} from 'vue-router';
@@ -48,6 +50,19 @@ const routes =
         component: ConversationContent,
       }
     ]
+  },
+
+  { 
+    path: '/Information', 
+    component: InformationEmails,
+    beforeEnter : guardMyroute,
+    name: 'Infos'
+  },
+
+  { 
+    path: '/Credits', 
+    component: HomeCredits,
+    name: 'Credits'
   }
 ]
 

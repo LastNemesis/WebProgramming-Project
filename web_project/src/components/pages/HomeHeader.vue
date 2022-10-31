@@ -27,6 +27,18 @@
           Emails 
         </router-link>
 
+        <div v-if="this.$store.state.userName!='Nobody is logged at the moment'">&emsp;-&emsp;</div>
+
+        <router-link to="/Information" class="navText" v-if="this.$store.state.userName!='Nobody is logged at the moment'"> 
+          Information 
+        </router-link>
+
+        &emsp;-&emsp;
+
+        <router-link to="/Credits" class="navText"> 
+          Credentials 
+        </router-link>
+
       </div>
 
     </div>
