@@ -5,6 +5,9 @@ This project was created in Advanced Web Programming by:
     - Mathild REGNIER
 All students of the M1-DT class.
 
+> Github link:
+    - https://github.com/LastNemesis/WebProgramming-Project
+
 > The functionnalities that were added were:
     - Credidential page
     - Information page (not completed but was originally supposed to help the user use the application)
